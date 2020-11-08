@@ -5,6 +5,10 @@
   margin: 10px 0px;
 }
 
-.loading.hide {
+.loading {
+  height: 100px;
+}
+
+.hide {
   display: none;
 }

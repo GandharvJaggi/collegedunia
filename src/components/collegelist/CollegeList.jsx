@@ -10,19 +10,22 @@ export default function CollegeList() {
   const [loading, setloading] = useState(false);
   const [list, setList] = useState(listdata.slice(0, 10));
 
-  const [ref, entry] = useIntersect({threshold: 1.0, rootMargin: '0px'});
+  const [ref, entry] = useIntersect({threshold: 1.0});
 
   const getList = useCallback(() => {
     // setList()
     setindex(index + 1);
-    setList(listdata.slice(0, index * 10));
-    setloading(false)
-  }, [index, listdata]);
+    let a = index >= 5 ? 0 : index - 1;
+    let b = index >= 5 ? 1 : index;
+
+    setList([...list, ...listdata.slice(a * 10, b * 10)]);
+    setloading(false);
+  }, [index, list, listdata]);
 
   useEffect(() => {
     console.log(entry.intersectionRatio);
     if (entry.intersectionRatio === 1) {
-      setloading(true)
+      setloading(true);
       getList();
     }
   }, [entry, getList]);
@@ -31,7 +34,8 @@ export default function CollegeList() {
       {list.map((d, i) => (
         <CollegeCard key={i} {...d} />
       ))}
-      <div className={`loading ${loading ? 'hide' : ''}`} ref={ref}>loading</div>
+      <div className={`loading ${!loading ? 'hide' : ''}`}>loading</div>
+      <div className={loading ? 'hide' : ''} ref={ref}></div>
     </div>
   );
 }
