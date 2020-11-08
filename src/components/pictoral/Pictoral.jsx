@@ -3,14 +3,14 @@ import React from 'react';
 import './pictoral.css';
 
 export default function Pictoral({
-  img,
+  image,
   ranking,
   promoted,
   rating,
   rating_remarks,
   tags
 }) {
-  img = img.split('.')[0]
+  var img = image.split('.')[0]
   return (
     <div
       className='pictoral'

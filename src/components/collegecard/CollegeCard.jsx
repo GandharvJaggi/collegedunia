@@ -16,31 +16,26 @@ export default function CollegeCard({
   original_fees,
   fees_cycle,
   offertext,
-  nearest_places,
+  nearest_place,
   famous_nearest_places,
   amenties
 }) {
   return (
     <div className='collegecard'>
-      <Pictoral
-        img={image}
-        ranking={ranking}
-        promoted={promoted}
-        rating={rating}
-        rating_remarks={rating_remarks}
-        tags={tags}
-      />
+      <Pictoral {...{image, ranking, promoted, rating, rating_remarks, tags}} />
       <Info
-        college_name
-        discounted_fees
-        discount
-        original_fees
-        fees_cycle
-        offertext
-        nearest_places
-        famous_nearest_places
-        rating
-        amenties
+        {...{
+          college_name,
+          discounted_fees,
+          discount,
+          original_fees,
+          fees_cycle,
+          offertext,
+          nearest_place,
+          famous_nearest_places,
+          rating,
+          amenties
+        }}
       />
     </div>
   );
